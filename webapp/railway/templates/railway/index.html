@@ -2,11 +2,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>Railway Booking</title>
+        {% include 'railway/components/header.html' with selected="" %}
     </head>
     <body>
+        {% include 'railway/components/ui_navbar.html' with selected="" %}
         <p>
             {{ example }}
         </p>
+
+        <!-- bootstrap test -->
+        <div class="container mt-4">
+            <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Username</th>
+                  <th>Password</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for entry in login_info %}
+                  <tr>
+                    <td>{{ entry.username }}</td>
+                    <td>{{ entry.user_password }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
     </body>
 </html>
