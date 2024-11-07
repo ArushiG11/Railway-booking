@@ -11,9 +11,9 @@ Install the required libraries by using `pip install -r requirements.txt`. \
 Please do not create a venv in this folder or push a venv onto the repo.
 
 #### Running the project locally
-1. Create a database called 'railway' in your mySQL workbench and run the file: `railway.sql`.
+1. Create a database called 'railway' in your mySQL workbench by querying `CREATE DATABASE railway`.
 2. Navigate to `webapp\webapp\settings.py` and change the credentials of the database to match your own.
-3. Navigate into the folder containing `manage.py` and run `python manage.py makemigrations` and then `python manage.py migrate`. Use these commands when you are finished pushing database changes.
+3. Navigate into the folder containing `manage.py` and run `python manage.py makemigrations` and then `python manage.py migrate`. Then run the file: `railway.sql` in your mySQL workbench.
 4. Run `python manage.py runserver` to start hosting the web application.
 5. The site will be hosted locally and you will be able to access the site at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
