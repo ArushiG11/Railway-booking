@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import connection
 # Create your views here.
 # Remember to write a view for every single page, then link the function in railway/urls.py to display the view
 
-# view for the index page
+# view for home page - where all the railway booking will be done
+def home(request):
+    if not request.session.get('is_logged_in'):
+        return redirect('railway:index')
+    context = {}
 
+    return render(request, "railway/home.html", context)  
+# view for the index page
 def index(request):
     example = "hello"
     login_info = None
@@ -25,7 +31,8 @@ def index(request):
             # check index.html to see how to display the information
 
             if login_info:
-                message = "Log in successful!"
+                request.session['is_logged_in'] = True
+                return redirect('railway:home')
             else:
                 message = "Invalid credentials"
     
@@ -33,6 +40,7 @@ def index(request):
             #return render(request, "railway/index.html", context)
         
         elif 'logout' in request.POST:
+            request.session.flush()
             context['message'] = "Successfully logged out."
             
     return render(request, "railway/index.html", context)

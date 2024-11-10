@@ -2,34 +2,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Railway Booking</title>
+        <title>Railway Booking - Login</title>
         {% include 'railway/components/header.html' with selected="" %}
     </head>
     <body>
         {% include 'railway/components/ui_navbar.html' with selected="" %}
-        <p>
-            {{ example }}
-        </p>
-        
-        <!-- bootstrap test -->
-        <div class="container mt-4">
-          <form method="post">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
+        <div class="container d-flex align-items-center justify-content-center min-vh-100">
+            <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+                <h2 class="text-center mb-4">Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" required>
+                    </div>
 
-            <button type="submit" name="login">Login</button>
-            <button type="submit" name="logout">Log Out</button>
-          </form>
-        
-          {% if message %}
-            <div class="alert">
-                {{ message }}
+                    {% if message %}
+                        <div class="alert alert-warning mt-3">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3" name="login">Sign In</button>
+
+                </form>
             </div>
-          {% endif %}
         </div>
     </body>
 </html>

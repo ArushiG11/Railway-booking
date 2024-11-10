@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Railway Booking - Login</title>
+        {% include 'railway/components/header.html' with selected="" %}
+    </head>
+    <body>
+        {% include 'railway/components/ui_navbar.html' with selected="" %}
+        <p>home page</p>
+        <form method="post" action="{% url 'railway:index' %}">
+            {% csrf_token %}
+            <button type="submit" name="logout" class="btn btn-danger">Log Out</button>
+        </form>
+    </body>
+</html>
